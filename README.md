@@ -1,5 +1,7 @@
 # Hangman Game
 
+Version française(./README.fr.md).
+
 Welcome to my first GitHub project: Hangman game, a classic word-guessing game implemented using **HTML**, **CSS**, and **JavaScript**.
 
 This project helped me practice fundamental web development skills and provided hands-on experience with APIs, dynamic content updates, and basic game logic.
