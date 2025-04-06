@@ -1,6 +1,6 @@
 # Hangman Game
 
-Version française ici :[README.fr.md](./README.fr.md).
+Version française ici : [README.fr.md](./README.fr.md).
 
 Welcome to my first GitHub project: Hangman game, a classic word-guessing game implemented using **HTML**, **CSS**, and **JavaScript**.
 
