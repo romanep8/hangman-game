@@ -1,5 +1,7 @@
 # Jeu du pendu
 
+English version here : [README.md](./README.md).
+
 Bienvenue dans mon premier projet GitHub : un jeu de pendu, un jeu classique de devinettes de mots réalisé avec **HTML**, **CSS** et **JavaScript**.
 
 Ce projet m'a permis de mettre en pratique mes compétences des fondamentamentaux du développement web et de gagner de l'expérience dans l'utilisation des API, les mises à jour dynamiques du contenu et la logique de base du jeu.
