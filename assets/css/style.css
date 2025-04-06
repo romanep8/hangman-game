@@ -1,0 +1,137 @@
+@font-face{
+    font-family: 'myfontregular';
+    src: url('../fonts/myfont-regular-webfont.woff2') format('woff2'),
+         url('../fonts/myfont-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+*,::before,::after{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	border:0;
+}
+
+:root{
+	--base-px:10px;
+	--lightgrey: #f4f4f4;
+    --white: #ffffff;
+    --black:#00000;
+    --pink: #ff99ec;
+	--darkpink: #b154a0;
+    --green: #28a745;
+    --darkred: rgb(183, 2, 2);
+    --border-radius: 10px;
+    --padding: 20px;
+}
+
+html{
+	font-size:var(--base-px);
+}
+
+body{
+    background-color: var(--black);
+    font-weight: normal;
+	font-family: 'myfontregular';
+	font-size: 2.2rem;
+}
+
+.container{
+	margin-top: 5rem;
+	width: 60%;
+	margin-inline: auto;
+    background-color: var(--lightgrey);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px var(--pink);
+    padding: var(--padding);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+h1{
+    font-size: 5rem;
+}
+
+h2{
+    font-size: 3rem;
+}
+
+.languageSelector{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+#wordToFind{
+    letter-spacing: 5px;
+    font-weight: bold;
+	margin-bottom: 2rem;
+}
+
+#stickCount,#logContainer{
+    color: var(--darkpink);
+}
+
+.letterButton{
+	margin-top: 1rem;
+}
+
+.letterButton input{
+    font-size: 1.4rem;
+    padding: .7rem;
+    width: 50%;
+    border: 1px solid var(--pink);
+}
+
+input::placeholder {
+    opacity: 0.5;
+}
+
+button{
+    background-color: var(--pink);
+    padding: .7rem;
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: var(--darkpink);
+    transform: scale(1.1);
+}
+
+#replayButton{
+    display: none;
+    margin-top: 1rem;
+}
+
+#logContainer{
+    margin-bottom: 2rem;
+}
+
+#hangmanDrawing{
+    font-family: monospace;
+    white-space: pre;
+    font-size: 1.8rem;
+    margin: 2rem 0;
+    color: var(--darkpink);
+    line-height: 1.2;
+    text-align: center;
+}
+
+@media (max-width:1050px){
+	.container{
+		width: 80%;
+	}
+}
+
+@media (max-width:750px){
+	.container{
+		width: 90%;
+	}
+}
