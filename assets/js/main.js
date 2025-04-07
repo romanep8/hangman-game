@@ -21,7 +21,10 @@ hangmanStages = [
 ], // array to store the hangman stages
 backupWords = {
     en: ["rhythms", "dermatoglyphics", "uncopyrightable", "zygote", "supercalifragilisticexpialidocious"],
-    fr: ["rhythmes", "anticonstitutionnellement", "inintelligibilité", "déchiffrable", "quincaillerie"]
+    fr: ["rhythmes", "anticonstitutionnellement", "inintelligibilité", "déchiffrable", "quincaillerie"],
+    it: ["psicopatico", "sovrintendenza", "indivisibilità", "anticonstituzionalmente", "incomprensibilmente"],
+    de: ["Donaudampfschifffahrtsgesellschaftskapitän", "Heizölrückstoßabämpfung", "Rindfleischetikettierungsüberwachungsaufgabenübertragungsgesetz"],
+    es: ["anticonstitucionalmente", "esternocleidomastoideo", "electroencefalografista", "desoxirribonucleico", "hipopotomonstrosesquipedaliofobia"]
 }; // array to store the backup words in case of API failure
 
 hangmanDrawing.innerText = hangmanStages[0]; // initial hangman drawing
@@ -60,6 +63,57 @@ const languageTexts = {
         "replay": "Rejouer",
         "inputPlaceholder": "Tapez une lettre",
         "buttonText": "Soumettre"
+    },
+    it: {
+        "gameTitle": "Impiccato",
+        "findWord": "Trova la parola",
+        "enterLetter": "Inserisci una lettera:",
+        "invalidInput": "Input non valido: inserisci una sola lettera",
+        "alreadyGuessed": "Già indovinato",
+        "saidLetters": "Lettere già proposte: ",
+        "correctLetter": "La lettera è corretta",
+        "wrongLetter": "La lettera non è nella parola",
+        "mistakesLeft": "Errori rimasti: ",
+        "theWord": "La parola era: ",
+        "youWon": "Hai vinto!",
+        "youLost": "Hai perso!",
+        "replay": "Rigiocare",
+        "inputPlaceholder": "Digita una lettera",
+        "buttonText": "Invia"
+    },
+    de: {
+        "gameTitle": "Galgenmännchen",
+        "findWord": "Finde das Wort",
+        "enterLetter": "Gib einen Buchstaben ein:",
+        "invalidInput": "Ungültige Eingabe: Bitte gib einen einzelnen Buchstaben ein",
+        "alreadyGuessed": "Bereits geraten",
+        "saidLetters": "Bereits genannte Buchstaben: ",
+        "correctLetter": "Der Buchstabe ist korrekt",
+        "wrongLetter": "Der Buchstabe ist nicht im Wort",
+        "mistakesLeft": "Fehler übrig: ",
+        "theWord": "Das Wort war: ",
+        "youWon": "Du hast gewonnen!",
+        "youLost": "Du hast verloren!",
+        "replay": "Wiederholen",
+        "inputPlaceholder": "Gib einen Buchstaben ein",
+        "buttonText": "Einreichen"
+    },
+    es: {
+        "gameTitle": "Ahorcado",
+        "findWord": "Encuentra la palabra",
+        "enterLetter": "Ingresa una letra:",
+        "invalidInput": "Entrada no válida: ingresa una sola letra",
+        "alreadyGuessed": "Ya adivinado",
+        "saidLetters": "Letras ya propuestas: ",
+        "correctLetter": "La letra es correcta",
+        "wrongLetter": "La letra no está en la palabra",
+        "mistakesLeft": "Errores restantes: ",
+        "theWord": "La palabra era: ",
+        "youWon": "¡Ganaste!",
+        "youLost": "¡Perdiste!",
+        "replay": "Repetir",
+        "inputPlaceholder": "Escribe una letra",
+        "buttonText": "Enviar"
     }
 };
 
@@ -88,13 +142,13 @@ function changeLanguage(language) {
 // function to fetch a random word from the API
 async function getWord(currentLanguage) {
     let apiUrl = "";
-    if (currentLanguage === "fr") {
-        apiUrl = "https://trouve-mot.fr/api/random";
-    } 
-    else{
-        apiUrl = "https://random-word-api.vercel.app/api?words=1";
+    switch (currentLanguage) {
+        case "en": apiUrl = "https://random-word-api.herokuapp.com/word"; break;
+        case "fr": apiUrl = "https://random-word-api.herokuapp.com/word?lang=fr"; break;
+        case "it": apiUrl = "https://random-word-api.herokuapp.com/word?lang=it"; break;
+        case "de": apiUrl = "https://random-word-api.herokuapp.com/word?lang=de"; break;
+        case "es": apiUrl = "https://random-word-api.herokuapp.com/word?lang=es"; break;
     }
-
     try {
         const response = await fetch(apiUrl);
         if (!response.ok) {
@@ -103,18 +157,10 @@ async function getWord(currentLanguage) {
         
         const data = await response.json();
         
-        if (currentLanguage === "fr"){
-            if (!data[0].name || typeof data[0].name !== "string") {
-                throw new Error("Invalid response format from API (FR)");
-            }
-            return data[0].name.toLowerCase();
-        } 
-        else{
-            if (!Array.isArray(data) || data.length === 0 || typeof data[0] !== "string") {
-                throw new Error("Invalid response format from API (EN)");
-            }
-            return data[0].toLowerCase();
+        if (!Array.isArray(data) || data.length === 0 || typeof data[0] !== "string") {
+            throw new Error("Invalid response format from API (EN)");
         }
+        return data[0].toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     } 
     catch (error) {
         console.error("Erreur :", error);
@@ -301,6 +347,21 @@ document.querySelector("#language-en").addEventListener("click", () => {
 document.querySelector("#language-fr").addEventListener("click", () => {
     currentLanguage = "fr";
     changeLanguage("fr");
+});
+
+document.querySelector("#language-it").addEventListener("click", () => {
+    currentLanguage = "it";
+    changeLanguage("it");
+});
+
+document.querySelector("#language-de").addEventListener("click", () => {
+    currentLanguage = "de";
+    changeLanguage("de");
+});
+
+document.querySelector("#language-es").addEventListener("click", () => {
+    currentLanguage = "es";
+    changeLanguage("es");
 });
 
 changeLanguage("en");
