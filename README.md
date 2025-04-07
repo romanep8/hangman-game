@@ -8,7 +8,7 @@ This project helped me practice fundamental web development skills and provided 
 
 ## Features
 
-- **Multilingual Support**: Available in English and French. The user can easily switch between languages using language selectors.
+- **Multilingual Support**: Available in English, French, Italian, Deutsch and Spanish. The user can easily switch between languages using language selectors.
 - **Random Word Generation**: Words are fetched from an external API for each round. In case the API fails, backup words are used.
 - **Hangman Stages**: Visual representation of the hangman game, where each incorrect guess adds a part to the drawing.
 - **Simple and Responsive Design**: The game works seamlessly across devices with a mobile-friendly layout.
