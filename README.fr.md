@@ -8,7 +8,7 @@ Ce projet m'a permis de mettre en pratique mes compétences des fondamentamentau
 
 ## Fonctionnalités
 
-- **Support multilingue** : Disponible en anglais et en français. L'utilisateur peut facilement passer d'une langue à l'autre grâce à un sélecteur de langue.
+- **Support multilingue** : Disponible en anglais, français, italien, allemand et espagnol. L'utilisateur peut facilement passer d'une langue à l'autre grâce à un sélecteur de langue.
 - **Génération de mots aléatoires** : Les mots sont récupérés à partir d'une API externe à chaque partie. En cas d'échec de l'API, des mots de secours sont utilisés.
 - **Étapes du pendu** : Représentation visuelle du jeu du pendu, chaque mauvaise réponse ajoute une partie au dessin.
 - **Design simple et responsive** : Le jeu fonctionne parfaitement sur tous les appareils avec une interface mobile-friendly.
