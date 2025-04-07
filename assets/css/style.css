@@ -1,7 +1,7 @@
-@font-face{
-    font-family: 'myfontregular';
-    src: url('../fonts/myfont-regular-webfont.woff2') format('woff2'),
-         url('../fonts/myfont-regular-webfont.woff') format('woff');
+@font-face {
+    font-family: 'kg_perfect_penmanshipregular';
+    src: url('../fonts/kgperfectpenmanship-webfont.woff2') format('woff2'),
+         url('../fonts/kgperfectpenmanship-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
@@ -34,8 +34,8 @@ html{
 body{
     background-color: var(--black);
     font-weight: normal;
-	font-family: 'myfontregular';
-	font-size: 2.2rem;
+	font-family: 'kg_perfect_penmanshipregular', sans-serif;
+	font-size: 1.8rem;
 }
 
 .container{
@@ -53,11 +53,11 @@ body{
 }
 
 h1{
-    font-size: 5rem;
+    font-size: 4.6rem;
 }
 
 h2{
-    font-size: 3rem;
+    font-size: 2.6rem;
 }
 
 .languageSelector{
@@ -85,7 +85,7 @@ h2{
 .letterButton input{
     font-size: 1.4rem;
     padding: .7rem;
-    width: 50%;
+    width: 65%;
     border: 1px solid var(--pink);
 }
 
