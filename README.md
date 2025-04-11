@@ -35,7 +35,7 @@ To play the game locally:
 1. Clone this repository to your local machine:
 
     ```bash
-    git clone https://github.com/yourusername/hangman-game.git
+    git clone https://github.com/romanep8/hangman-game.git
     ```
 
 2. Open the `index.html` file in your preferred web browser.
