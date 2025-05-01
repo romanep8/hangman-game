@@ -134,7 +134,10 @@ function changeLanguage(language) {
     document.querySelector("#replayButton").textContent = languageTexts[language].replay;
     document.querySelector("#inputField").setAttribute("placeholder", languageTexts[language].inputPlaceholder);
     document.querySelector("#submitButton").textContent = languageTexts[language].buttonText;
-    
+        document.querySelectorAll(".language-button").forEach(button => {
+        button.classList.remove("active");
+    });
+    document.querySelector(`#language-${language}`).classList.add("active");
     restartGame();
 }
 
