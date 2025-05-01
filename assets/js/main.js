@@ -141,6 +141,7 @@ function changeLanguage(language) {
 
 // function to fetch a random word from the API
 async function getWord(currentLanguage) {
+    console.log("getWord() called with language:", currentLanguage); 
     let apiUrl = "";
     switch (currentLanguage) {
         case "en": apiUrl = "https://random-word-api.herokuapp.com/word"; break;
@@ -150,6 +151,7 @@ async function getWord(currentLanguage) {
         case "es": apiUrl = "https://random-word-api.herokuapp.com/word?lang=es"; break;
     }
     try {
+        console.log("Fetching word from:", apiUrl);
         const response = await fetch(apiUrl);
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
@@ -173,20 +175,6 @@ function getBackupWord(language) {
     const words = backupWords[language] || backupWords.en;
     return words[Math.floor(Math.random() * words.length)];
 }
-  
-// setting up the word to find
-getWord(currentLanguage).then(generateWord => {
-    nbLetters = generateWord.length;
-    tab = generateWord.split("");
-    word = generateWord;
-
-    for (let i = 0; i < nbLetters; i++) {
-        let span = document.createElement("span");
-        span.textContent = "_ ";
-        wordToFind.append(span);
-        tabToFind.push(span);
-    }
-});
 
 // function to log messages for the player (e.g., already guessed letters, game status)
 function logMessage(message,time=null) {
@@ -306,11 +294,13 @@ function restartGame(){
     tabToFind = [];
     inputValues = [];
     
+    stickCount.style.display = "block";
     stickCount.innerText = `${languageTexts[currentLanguage].mistakesLeft} ${mistakesAllowed}`;
     saidLetters.innerText = languageTexts[currentLanguage].saidLetters;
     enter.style.display = "block";
     saidLetters.style.display = "block";
     wordToFind.innerHTML = "";
+    hangmanDrawing.style.display = "block";
     hangmanDrawing.innerText = hangmanStages[0];
 
     getWord(currentLanguage).then(generateWord => {
