@@ -105,6 +105,10 @@ button:hover{
     transform: scale(1.1);
 }
 
+button.active{
+    border: var(--darkpink) solid 2px;
+}
+
 #replayButton{
     display: none;
     margin-top: 1rem;
